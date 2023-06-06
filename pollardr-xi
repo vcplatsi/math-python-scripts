@@ -1,0 +1,27 @@
+#! /usr/bin/python3
+
+import math as m
+
+#find the x_i of Pollard's r algorithm
+n = 25279
+x = 5
+i = 0
+lx =[]
+lx.append(x)
+
+while i < 11:
+   print("The {} -th x is {}".format(i, x))
+   print("===================================")
+   x =  (x**3 + x**2 +1) % n
+   lx.append(x)
+   i = i + 1
+index = int( len(lx) / 2 ) 
+nf = True  
+for j in range(1,index):
+    g = m.gcd(lx[j] - lx[2*j], n) 
+    if g != 1:
+        print("Found it! It's x_{}".format(j))
+        print("The gcd of x_{} and x_{} is {}".format(j, 2*j, g))
+        nf = False
+if nf:
+    print("Not found.")

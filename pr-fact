@@ -1,0 +1,50 @@
+#! /usr/bin/python3
+from math import *
+
+#find g**i and its factorization
+#change g (primitive root) , n
+ 
+def factorize(n):
+    count = 0;
+    di = {} 
+    # count the number of
+    # times 2 divides
+    while ((n % 2 > 0) == False):
+         
+        # equivalent to n = n / 2;
+        n >>= 1;
+        count += 1;
+ 
+    # if 2 divides it
+    if (count > 0):
+        di["2"] = count
+        #print(2, count);
+ 
+    # check for all the possible
+    # numbers that can divide it
+    for i in range(3, int(sqrt(n)) + 1):
+        count = 0;
+        while (n % i == 0):
+            count += 1;
+            n = int(n / i);
+        if (count > 0):
+            di[str(i)] = count
+            #print(i, count);
+        i += 2;
+ 
+    # if n at the end is a prime number.
+    if (n > 2):
+        di[str(n)] = 1
+        #print(n, 1);
+    return di
+
+g = 3
+n = 449
+
+
+for i in range(1,n):
+    x = (g**i) % n
+    f = factorize(x)
+    print(i,"  ",x, "  ",f)
+    
+            

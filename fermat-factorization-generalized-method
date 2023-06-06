@@ -1,0 +1,22 @@
+#! /usr/bin/python3
+
+#Fermat paragontopoihsh geniki methodos
+
+import math as m
+
+n=int(input("Give number to factorize: "))
+k=3 #make it as input
+t=int(m.sqrt(k*n))
+print("\n t is :", t)
+print("-------------------------")
+i=1
+while True:
+    s = m.sqrt(pow(t+i,2) - (k*n))
+    if s.is_integer():
+        print("\nThe number s is : ", s)
+        print("\nSo t + i + s is : {} \nand t + i - s is : {}.".format(t+i+s,t+i-s))
+        print("\nSo t + i + s/k is : {} \nand t + i - s/k is : {}.".format((t+i+s)/k,(t+i-s)/k))
+        print("\nIt took {} times to find it.".format(i))
+        break
+    else:
+        i=i+1
